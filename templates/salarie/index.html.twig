@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SalarieController!{% endblock %}
+
+{% block contenu %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>SALARIE</th>
+            <th>ADRESSE</th>
+            <th>CP</th>
+            <th>VILLE</th>
+            <th>DATE EMBAUCHE</th>
+            <th>ENTREPRISE</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for salarie in salaries %}
+            <tr>
+                <td>
+                    <a href="{{ path('salarie_show',{'id':salarie.id}) }}">
+                    {{ salarie.nom ~ ' ' ~ salarie.prenom}}</a>
+                </td>
+                <td> {{salarie.adresse}} </td>
+                <td> {{ salarie.cp }} </td>
+                <td> {{salarie.ville}} </td>
+                <td> {{salarie.dateEmbauche | date( 'd/m/Y') }} </td>
+                <td> {{salarie.entreprise.raisonSociale }} </td>
+                <td>
+                    <a href= " {{ path('salarie_edit',{'id': salarie.id}) }}">Modifier</a>
+                </td>
+
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ path('salarie_add')}}">Ajouter</a>
+
+            
+{% endblock %}

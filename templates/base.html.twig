@@ -6,7 +6,15 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+        {% block body %}
+            {% block nav %}
+                <a href= " {{ path('salaries_index')}}">Salaries</a>
+                <a href= "{{ path('entreprises_index')}}">Entreprises</a>
+            {% endblock %}
+            {% block contenu %}
+            {% endblock %}
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
